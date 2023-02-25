@@ -38,12 +38,18 @@ public class HomeWork4 {
      * Необходимо написать метод magSort(), который удалит из корзины все продукты, вес которых больше 300.
      */
 
-    public static List<String> correctedList(List<String> stringList) {
-        // Место для Вашего кода задания №1
-        return Collections.emptyList();
+    public static List<String> correctedList(List<String> stringList) {    //1 task
+        return stringList.stream()
+                .filter(str->!str.chars().allMatch(Character::isUpperCase))
+                .collect(Collectors.toList());
     }
-    public static HashMap<String, Integer> magSort(HashMap<String, Integer> shopCart) {
-        // Место для Вашего кода задания №2
+    public static HashMap<String, Integer> magSort(HashMap<String, Integer> shopCart) {  //2 task
+        HashMap <String, Integer> delete = new HashMap<>();
+        for (Map.Entry<String, Integer> item:shopCart.entrySet()){
+            if (item.getValue() > 300) {
+                delete.put(item.getKey(), item.getValue());
+            }
+        }
         return shopCart;
     }
 
